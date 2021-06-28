@@ -36,5 +36,3 @@ A simple Hospital Patient Lister
 ->Add Forgot Password
 
 ->Add Comments
-
-# Project is finished for now. Please let me know about any more additions i can make to it#
