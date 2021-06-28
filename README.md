@@ -3,36 +3,36 @@
 A simple Hospital Patient Lister
 ## Implemented: ##
 
-->Serve HTML page for /Patients
+- Serve HTML page for /Patients
 
-->Added a rough homepage
+- Added a rough homepage
 
-->take input from user by homepage as a form
+- take input from user by homepage as a form
 
-->Integrated in SQL database to save patients
+- Integrated in SQL database to save patients
 
-->Added suppport for searching existing Patients
+- Added suppport for searching existing Patients
 
-->Beautified all pages
+- Beautified all pages
 
-->Added API and added API link to homepage
+- Added API and added API link to homepage
 
-->Added login and register capabilities
+- Added login and register capabilities
 
-->Added adding API. Can't have a deletion API. Security Risk.
+- Added adding API. Can't have a deletion API. Security Risk.
 
-->Fixed null error
+- Fixed null error
 
-->Added restrictions when adding Patients for temp, age, null, date validity.
+- Added restrictions when adding Patients for temp, age, null, date validity.
 
-->Added delete for admin users only
+- Added delete for admin users only
 
-->Beautified login and register page
+- Beautified login and register page
 
-->Fixed looks of overall site
+- Fixed looks of overall site
 
 ## To do: ##
 
-->Add Forgot Password
+- Add Forgot Password
 
-->Add Comments
+- Add Comments
