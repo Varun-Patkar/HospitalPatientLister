@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Search Existing-Hospital Patient Lister</title>
+	<style>
+	table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+	
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+	  background-color: #dddddd;
+	}
+	</style>
+</head>
+<body>
+	<a href="/">Home</a>
+	<a href="/Patients">List of All Patients</a>
+	<table>
+	<h1>List of Existing Patients according to Name and Date:</h1>
+    <hr>
+    <br><br>
+    <tr>
+	    <th>Name</th>
+	    <th>Age</th>
+	    <th>Date</th>
+	    <th>Temperature</th>
+		<th>Symptoms</th>
+    </tr>
+    <tr th:each="Patient: ${Patients}">
+	    <td th:text="${Patient.name}"></td>
+	    <td th:text="${Patient.age}"></td>
+		<td th:text="${Patient.date}"></td>
+	    <td th:text="${Patient.temperature}"></td>
+	    <td th:text="${Patient.symptoms}"></td>
+ 	</tr>
+    </table>
+</body>
+</html>

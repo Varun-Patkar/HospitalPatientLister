@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><!-- Basic -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">   
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- Site Metas -->
+	<title>Hospital Patient Project</title>	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+
+	<!-- Site Icons -->
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<!-- Pogo Slider CSS -->
+	<link rel="stylesheet" href="/css/pogo-slider.min.css">
+	<!-- Site CSS -->
+	<link rel="stylesheet" href="/css/style.css">    
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="/css/responsive.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond./js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+
+	<!-- LOADER -->
+     <!-- <div id="preloader">
+		<div class="loader">
+			<img src="/images/preloader.gif" alt="" />
+		</div>
+	</div>end loader -->
+	<!-- END LOADER -->
+	
+	<!-- Start header -->
+	<header class="top-header">
+		<nav class="navbar header-nav navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand" href="/"><img src="/images/Generic Hospital Logo.png" alt="image" height="76px" width="200px"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
+					<ul class="navbar-nav">
+						<li><a class="nav-link active" href="#home">Home</a></li>
+						<li><a class="nav-link" href="#appointment">Add/Search for Existing Patients</a></li>
+						<li><a class="nav-link" href="/Patients">List of All Patients</a></li>
+						<li th:if="${loggedin}"><a th:href="@{/logout}" class="nav-link">Sign out</a></li>
+						<li th:if="${not loggedin}"><a href="/login" class="nav-link">Login</a></li>
+						<li th:if="${not loggedin}"><a href="/register" class="nav-link">Register</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+	
+	<!-- Start Banner -->
+	<div class="ulockd-home-slider">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="pogoSlider" id="js-main-slider">
+					<div class="pogoSlider-slide" data-transition="fade" data-duration="1500" style="background-image:url(/images/slider-01.jpg);">
+						<div class="lbox-caption pogoSlider-slide-element">
+							<div class="lbox-details">
+								<h1>To search for existing patients with API</h1>
+								<h2>Go to /Patients-json-search and enter params as name and date</h2>
+								<a href="/Patients-json-search?name=<YourName>&date=<YourDate>" class="btn">Go To API</a>
+								</div>
+							</div>
+						</div>
+						<div class="pogoSlider-slide" data-transition="fade" data-duration="1500" style="background-image:url(/images/slider-02.jpg);">
+							<div class="lbox-caption pogoSlider-slide-element">
+								<div class="lbox-details">
+									<h1>To add patients with API</h1>
+									<h2>Go to /Patients-json-add and enter params</h2>
+									<a href="/Patients-json-add?name=<YourName>&age=<YourAge>&date=<YourDate>&temperature=<YourTemperature>&symptoms=<YourSymptoms>" class="btn">Go To API</a>
+									</div>
+								</div>
+							</div>
+							<!-- .pogoSlider -->
+						</div>
+					</div>
+				</div>
+				<!-- End Banner -->
+
+				<!-- Start Appointment -->
+				<div id="appointment" class="appointment-main">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="title-box">
+									<h2>Add/Search Existing Patients</h2>
+									<p>Please enter details below to Add/Search Existing Patients</p>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6 col-md-6">
+								<div class="well-block">
+									<div class="well-title">
+										<h2>Add Patient</h2>
+									</div>
+									<form action="#" th:action="@{/Patients}" th:object="${Patient}" method="post">
+										<!-- Form start -->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="name">Patient's Name:</label>
+													<input id="name" name="name" type="text" placeholder="Patient's Name" class="form-control input-md" th:field="*{name}" required>
+												</div>
+											</div>
+											<!-- Text input-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="email">Patient's Age</label>
+													<input id="email" name="email" type="number" placeholder="Patient's Age" class="form-control input-md" th:field="*{age}" required>
+												</div>
+											</div>
+											<!-- Text input-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="date">Patient's Date Of Admission</label>
+													<input id="date" name="date" type="text" placeholder="dd/mm/yyyy" class="form-control input-md" th:field="*{date}" required>
+												</div>
+											</div>
+											<!-- Text input-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="date">Patient's Temperature(in &#176;F)</label>
+													<input id="date" name="date" type="number" placeholder="Patient's Temperature" class="form-control input-md" th:field="*{temperature}" required>
+												</div>
+											</div>
+											<!-- Text input-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="date">Patient's Symptoms</label>
+													<input id="date" name="date" type="text" placeholder="Patient's Symptoms" class="form-control input-md" th:field="*{symptoms}" required>
+												</div>
+											</div>
+											<!-- Button -->
+											<div class="col-md-12">
+												<div class="form-group">
+													<button id="singlebutton" name="singlebutton" class="new-btn-d br-2" type="submit">Submit</button>
+												</div>
+											</div>
+										</div>
+									</form>
+									<!-- form end -->
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6">
+								<div class="well-block">
+									<div class="well-title">
+										<h2>Search for existing Patient</h2>
+									</div>
+									<form action="#" th:action="@{/searchExisting}" th:object="${Query}" method="post">
+										<!-- Form start -->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="name">Patient's Name:</label>
+													<input id="name" name="name" type="text" placeholder="Patient's Name" class="form-control input-md" th:field="*{name}" required>
+												</div>
+											</div>
+											<!-- Text input-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="date">Patient's Date Of Admission</label>
+													<input id="date" name="date" type="text" placeholder="Patient's Date Of Admission" class="form-control input-md" th:field="*{date}" required>
+												</div>
+											</div>
+											<!-- Button -->
+											<div class="col-md-12">
+												<div class="form-group">
+													<button id="singlebutton" name="singlebutton" class="new-btn-d br-2" type="submit">Submit</button>
+												</div>
+											</div>
+										</div>
+									</form>
+									<!-- form end -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Appointment -->
+				<!-- Start Footer -->
+				<footer class="footer-box">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">Health Lab</a> Design By : <a href="https://html.design/">html design</a></p>
+							</div>
+						</div>
+					</div>
+				</footer>
+				<!-- End Footer -->
+
+				<a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a>
+
+				<!-- ALL JS FILES -->
+				<script src="/js/jquery.min.js"></script>
+				<script src="/js/popper.min.js"></script>
+				<script src="/js/bootstrap.min.js"></script>
+				<!-- ALL PLUGINS -->
+				<script src="/js/jquery.magnific-popup.min.js"></script>
+				<script src="/js/jquery.pogo-slider.min.js"></script> 
+				<script src="/js/slider-index.js"></script>
+				<script src="/js/smoothscroll.js"></script>
+				<script src="/js/TweenMax.min.js"></script>
+				<script src="/js/main.js"></script>
+				<script src="/js/owl.carousel.min.js"></script>
+				<script src="/js/form-validator.min.js"></script>
+				<script src="/js/contact-form-script.js"></script>
+				<script src="/js/isotope.min.js"></script>	
+				<script src="/js//images-loded.min.js"></script>	
+				<script src="/js/custom.js"></script>
+			</body>
+			</html>

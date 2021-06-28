@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Home Page-Hospital Patient Lister</title>
+</head>
+<body>
+<a href="/">Home</a>
+<a href="/Patients">List of All Patients</a>
+<h1>This is the home page</h1>
+<h1>Add Patient</h1>
+    <form action="#" th:action="@{/Patients}" th:object="${Patient}" method="post">
+    	<p>Patient's Name: <input type="text" th:field="*{name}" /></p>
+        <p>Patient's Age: <input type="text" th:field="*{age}" /></p>
+        <p>Patient's Date Of Admission: <input type="text" th:field="*{date}" /></p>
+        <p>Patient's Temperature: <input type="text" th:field="*{temperature}" /></p>
+        <p>Patient's Symptoms: <input type="text" th:field="*{symptoms}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<h1>Check Existing</h1>
+    <form action="#" th:action="@{/searchExisting}" th:object="${Query}" method="post">
+    	<p>Patient's Name: <input type="text" th:field="*{name}" /></p>
+        <p>Patient's Date Of Admission: <input type="text" th:field="*{date}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
